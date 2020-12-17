@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  background-color: lightpink;
+  /* background-color: lightpink; */
+  
 }
 
 .App-logo {
@@ -36,4 +37,16 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.list_container{
+  /* background-color: lightgray; */
+  
+}
+li{
+  color:white;
+}
+
+body{
+  background-image: url("../src/night_bg.jpg");
 }

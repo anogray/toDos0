@@ -8,7 +8,8 @@ class TodoHome extends React.Component {
         redoArr:[],
         globalidx:0,
         changed : 0,
-        savedval:{idx:0,val:0}
+        savedval:{},
+        noNotes:"No Notes left or either try to undo/redo if present"
     };
 // 1 2 3 4 5 6 - 3 4 
 // [{val:val, id:idx4},{val:val, id:id3}]
@@ -107,23 +108,52 @@ remove=async (arhandle)=>{
 
 }
 
+
+    // render() {
+    //     let renderarr = this.state.arr;
+    //     return (
+           
+    //         <div>
+    //         <button onClick={this.add}>Add</button>
+    //         <button onClick={this.undo}>Undo</button>
+    //         <button onClick={this.redo}>Redo</button>
+            
+    //         <div className="list_container">
+    //         {this.state.arr.map((ar) =>
+    //             (
+    //                 <li id={ar.idx}>{ar.val}
+    //                 <button onClick={()=>this.remove(ar)}>Remove</button>
+    //                 </li>
+    //             )
+    //             )}
+                
+    //         </div>
+               
+    //         </div>
+    //     );
+    // }
+
     render() {
         let renderarr = this.state.arr;
-        return (
-           
+        let notesList = this.state.arr.map((ar) =>
+        (
+            <li id={ar.idx}>{ar.val}
+            <button onClick={()=>this.remove(ar)}>Remove</button>
+            </li>
+        )
+        )
+        return ( 
             <div>
             <button onClick={this.add}>Add</button>
             <button onClick={this.undo}>Undo</button>
             <button onClick={this.redo}>Redo</button>
             
-            <div className="list">
-            {this.state.arr.map((ar) =>
-                (
-                    <li id={ar.idx}>{ar.val}
-                    <button onClick={()=>this.remove(ar)}>Remove</button>
-                    </li>
-                )
-                )}
+            <div className="list_container">
+            {notesList.length?notesList:
+                <li>
+                {this.state.noNotes}
+                </li>}
+                
             </div>
                
             </div>
